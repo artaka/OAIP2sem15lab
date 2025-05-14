@@ -1,7 +1,8 @@
 #include <iostream>
 #include <chrono>
+#include <Windows.h>
 using namespace std;
-int n = 0;
+int n = 10;
 
 void createArray(int n, int array[]) {
 	for (int i = 0; i != n;++i) {
@@ -106,8 +107,8 @@ void Shell(int A[], int n) {
 }
 
 int main() {
-	setlocale(LC_ALL, "RU");
-	cout << "Ââåäèòå ÷èñëî N(êîë-âî ÷èñåë):";
+	SetConsoleOutputCP(CP_UTF8);
+	cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ñ‡Ð¸ÑÐ»Ð¾ N:";
 	cin >> n;
 
 	int array[10000];
@@ -135,7 +136,7 @@ int main() {
 		F[i] = array[i];
 	}
 
-	cout << "Èñõîäíûé ìàññèâ:" << endl;
+	cout << "Ð˜ÑÑ…Ð¾Ð´Ð½Ñ‹Ð¹ Ð¼Ð°ÑÑÐ¸Ð²:" << endl;
 	for (int i = 0; i != n;++i) {
 		cout << array[i] << " ";
 	}
@@ -143,7 +144,7 @@ int main() {
 	auto buble = chrono::steady_clock::now();
 	bubbleSort(B, n);
 	auto bubleTime = chrono::duration_cast<std::chrono::microseconds>(std::chrono::steady_clock::now() - buble);
-	cout << endl << endl << "Îòñîðòèðîâàííûé ïóçûðüêîì ìàññèâ:" << endl;
+	cout << endl << endl << "ÐžÑ‚ÑÐ¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð½Ñ‹Ð¹ Ð¿ÑƒÐ·Ñ‹Ñ€ÑŒÐºÐ¾Ð¼ Ð¼Ð°ÑÑÐ¸Ð²:" << endl;
 	for (int i = 0;i != n;++i) {
 		cout << B[i] << " ";
 	}
@@ -151,7 +152,7 @@ int main() {
 	auto insert = chrono::steady_clock::now();
 	insertSort(C, n);
 	auto insertTime = chrono::duration_cast<std::chrono::microseconds>(std::chrono::steady_clock::now() - insert);
-	cout << endl << "Îòñîðòèðîâàííûé âñòàâêîé ìàññèâ:" << endl;
+	cout << endl << "ÐžÑ‚ÑÐ¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð½Ñ‹Ð¹ Ð²ÑÑ‚Ð°Ð²ÐºÐ¾Ð¹ Ð¼Ð°ÑÑÐ¸Ð²:" << endl;
 	for (int i = 0;i != n;++i) {
 		cout << C[i] << " ";
 	}
@@ -159,7 +160,7 @@ int main() {
 	auto selection = chrono::steady_clock::now();
 	selectionSort(D, n);
 	auto selectionTime = chrono::duration_cast<std::chrono::microseconds>(std::chrono::steady_clock::now() - selection);
-	cout << endl << "Îòñîðòèðîâàííûé âûáîðîì ìàññèâ:" << endl;
+	cout << endl << "ÐžÑ‚ÑÐ¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð½Ñ‹Ð¹ Ð²Ñ‹Ð±Ð¾Ñ€Ð¾Ð¼ Ð¼Ð°ÑÑÐ¸Ð²:" << endl;
 	for (int i = 0;i != n;++i) {
 		cout << D[i] << " ";
 	}
@@ -167,7 +168,7 @@ int main() {
 	auto quick = chrono::steady_clock::now();
 	quickSort(E, 0, n - 1);
 	auto quickTime = chrono::duration_cast<std::chrono::microseconds>(std::chrono::steady_clock::now() - quick);
-	cout << endl << "Îòñîðòèðîâàííûé áûñòðî ìàññèâ:" << endl;
+	cout << endl << "ÐžÑ‚ÑÐ¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð½Ñ‹Ð¹ Ð±Ñ‹ÑÑ‚Ñ€Ð¾Ð¹ ÑÐ¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²ÐºÐ¾Ð¹ Ð¼Ð°ÑÑÐ¸Ð²:" << endl;
 	for (int i = 0;i != n;++i) {
 		cout << E[i] << " ";
 	}
@@ -175,16 +176,16 @@ int main() {
 	auto shellStart = chrono::steady_clock::now();
 	Shell(F, n);
 	auto shellTime = chrono::duration_cast<std::chrono::microseconds>(std::chrono::steady_clock::now() - shellStart);
-	cout << endl << endl << "Îòñîðòèðîâàííûé ìåòîäîì Øåëëà ìàññèâ:" << endl;
+	cout << endl << endl << "ÐžÑ‚ÑÐ¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð½Ñ‹Ð¹ ÑÐ¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²ÐºÐ¾Ð¹ ÑˆÐµÐ»Ð»Ð° Ð¼Ð°ÑÑÐ¸Ð²:" << endl;
 	for (int i = 0;i != n;++i) {
 		cout << F[i] << " ";
 	}
 
 	cout << endl << endl << endl <<
-		"Çàòðà÷åííîå âðåìÿ:" << endl;
-	cout << "Ïóçûðüêîâàÿ ñîðòèðîâêà: " << bubleTime.count() << " ìêñ" << endl;
-	cout << "Ñîðòèðîâêà âñòàâêîé: " << insertTime.count() << " ìêñ" << endl;
-	cout << "Ñîðòèðîâêà âûáîðîì: " << selectionTime.count() << " ìêñ" << endl;
-	cout << "Áûñòðàÿ ñîðòèðîâêà: " << quickTime.count() << " ìêñ" << endl;
-	cout << "Ñîðòèðîâêà ìåòîäîì Øåëëà: " << shellTime.count() << " ìêñ" << endl;
+		"Ð’Ñ€ÐµÐ¼Ñ ÑÐ¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²Ð¾Ðº:" << endl;
+	cout << "ÐŸÑƒÐ·Ñ‹Ñ€ÑŒÐºÐ¾Ð²Ð°Ñ ÑÐ¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²ÐºÐ°: " << bubleTime.count() << " Ð¼ÐºÑ" << endl;
+	cout << "Ð¡Ð¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²ÐºÐ° Ð²ÑÑ‚Ð°Ð²ÐºÐ¾Ð¹: " << insertTime.count() << " Ð¼ÐºÑ" << endl;
+	cout << "Ð¡Ð¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²ÐºÐ° Ð²Ñ‹Ð±Ð¾Ñ€Ð¾Ð¼: " << selectionTime.count() << " Ð¼ÐºÑ" << endl;
+	cout << "Ð‘Ñ‹ÑÑ‚Ñ€Ð°Ñ ÑÐ¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²ÐºÐ°: " << quickTime.count() << " Ð¼ÐºÑ" << endl;
+	cout << "Ð¡Ð¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²ÐºÐ° Ð¼ÐµÑ‚Ð¾Ð´Ð¾Ð¼ ÑˆÐµÐ»Ð»Ð°: " << shellTime.count() << " Ð¼ÐºÑ" << endl;
 }
